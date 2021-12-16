@@ -15,26 +15,37 @@ public class CityService {
 
 	@Autowired
 	private ICityRepository cityRepository;
-	
-	public Optional<City> getById(long id) {
-		
-		return cityRepository.findById(id);
-	}
 
+	public Optional<City> getById(Long id) {
+		Optional<City> cityOption = cityRepository.findById(id);
+		if(cityOption.isPresent()) {
+			City city = cityOption.get();
+			city.setFahrenheit((city.getWeather()*9/5)+ 32);
+
+			//return city;
+	}
+		return  null;
+	}
 	public List<City> getAll() {
-		
-		return cityRepository.findAll();
+
+		List<City> cities = cityRepository.findAll();
+		for(City city:cities) {
+			city.setFahrenheit((city.getWeather()*9/5) + 32);
+		}
+		return cities;
+
 	}
 
 	public boolean existsByName(String name) {
-		
+
 		return cityRepository.existsByName(name);
 	}
 
 	public City save(CreateCityDTO dto) {
-		City city =  new City(dto.getName(), dto.getWeather());
+		City city =  new City(dto.getName(),
+				dto.getWeather());
 		return cityRepository.save(city);
 	}
-	
+
 
 }
