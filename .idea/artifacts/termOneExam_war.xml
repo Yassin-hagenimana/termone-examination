@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="termOneExam:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>termOneExam</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="termOneExam-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="termOneExam:war exploded" />
+    </root>
+  </artifact>
+</component>
